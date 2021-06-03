@@ -13,7 +13,7 @@
 	<artifactId>users</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>users</name>
-	<description>TFG project user microservice</description>
+	<description>TFG project users microservice</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -73,6 +73,12 @@
 			<artifactId>swagger-models</artifactId>
 			<version>2.1.7</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.mindrot.bcrypt/bcrypt -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+			</dependency>
+
 	</dependencies>
 
 	<build>

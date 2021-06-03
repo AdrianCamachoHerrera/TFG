@@ -1,20 +1,19 @@
 package com.adrian.tfg.users.repository;
 
-import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.repository.query.Param;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.stereotype.Repository;
 
 import com.adrian.tfg.users.model.User;
 
-@RepositoryRestResource(collectionResourceRel = "user", path = "user")
+@Repository("userRepository")
 public interface UserRepository extends MongoRepository<User, String> {
+	
+	boolean existsByUsername(String username);
+	
+	boolean existsByEmail(String email);
 
-	List<User> findByName(@Param("name") String name);
-	
-	List<User> findByNameLike(@Param("name") String name);
-	
-	List<User> findByLastnameLike(@Param("lastname") String lastname);
-	
+	Optional<User> findByUsername(String username);
 }
