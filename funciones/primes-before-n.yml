@@ -1,0 +1,14 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: http://172.25.198.69:31112
+functions:
+  primes-before-n:
+    lang: python3
+    handler: ./primes-before-n
+    image: hiimadry/primes-before-n:latest
+    requests:
+      cpu: 10m
+    labels:
+      com.openfaas.scale.factor: 0
+
