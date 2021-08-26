@@ -2,6 +2,7 @@ package com.adrian.tfg.users.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -10,7 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.Data;
 
 @Document(collection = "user")
-public @Data class User implements Serializable{
+public @Data class User implements Serializable {
 
 	
 	private static final long serialVersionUID = 5836858544646579720L;
@@ -24,8 +25,8 @@ public @Data class User implements Serializable{
 	
 	private String name;
 	
-	private String lastname;
+	private String avatar;
 	
-	private String email;
+	private List<String> friends;
 
 }
