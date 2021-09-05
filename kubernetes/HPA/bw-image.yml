@@ -1,0 +1,15 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: bw-image
+spec:
+  maxReplicas: 8                   # Máximo de réplicas
+  minReplicas: 1                   # Mínimo de réplicas
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: bw-image-test
+  targetCPUUtilizationPercentage: 50 # Valor deseado en tanto por ciento de valor de solicitud de cpu
+
+
+  

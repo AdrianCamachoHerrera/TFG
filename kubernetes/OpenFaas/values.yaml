@@ -1,0 +1,26 @@
+functionNamespace: openfaas-fn
+generateBasicAuth: true
+
+gateway:
+  directFunctions: false
+
+nats:
+  metrics:
+    enabled: true
+
+ingress:
+  enabled: true
+  pathType: ImplementationSpecific
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+  tls:
+    - hosts:
+        - openfaas.adriancamachofaas.ml
+      secretName: openfaas-crt
+  hosts:
+    - host: openfaas.adriancamachofaas.ml
+      serviceName: gateway
+      servicePort: 8080
+      path: /
+      

@@ -1,0 +1,20 @@
+apiVersion: autoscaling/v2beta2     # Versión de la API de autoscaling
+kind: HorizontalPodAutoscaler
+metadata:
+  name: prepare-image
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1 
+    kind: Deployment 
+    name: prepare-image-test 
+  minReplicas: 1                    # Mínimo de réplicas
+  maxReplicas: 10                   # Máximo de réplicas
+  metrics: 
+  - type: Resource
+    resource:
+      name: memory                  # Memoria
+      target:
+        type: Utilization          
+        averageValue: 100Mi         # Valor objetivo
+
+
