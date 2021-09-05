@@ -1,0 +1,10 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: https://openfaas.adriancamachofaas.ml
+functions:
+  gs-image:
+    lang: python3-flask-debian-im-cv2
+    handler: ./gs-image
+    image: hiimadry/gs-image:latest
+

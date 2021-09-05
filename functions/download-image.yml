@@ -1,0 +1,11 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: https://openfaas.adriancamachofaas.ml
+functions:
+  download-image:
+    lang: python3-flask-debian
+    handler: ./download-image
+    image: hiimadry/download-image:latest
+    environment:
+      mongo: mongo

@@ -1,0 +1,10 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: https://openfaas.adriancamachofaas.ml
+functions:
+  prepare-image:
+    lang: python3-flask-debian-im
+    handler: ./prepare-image
+    image: hiimadry/prepare-image:latest
+

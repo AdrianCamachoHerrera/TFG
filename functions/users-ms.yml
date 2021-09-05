@@ -1,0 +1,17 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: https://openfaas.adriancamachofaas.ml
+functions:
+  users-ms:
+    lang: dockerfile
+    handler: ./users
+    image: hiimadry/users-ms:latest
+#    requests:
+#     cpu: 25m
+#     memory: 273M
+    annotations:
+      com.openfaas.health.http.path: "/health"
+      com.openfaas.health.http.initialDelay: "30s"
+    environment:
+      mongo: mongo
