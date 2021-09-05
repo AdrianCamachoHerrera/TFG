@@ -1,7 +1,7 @@
 package com.adrian.tfg.images.model;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Date;
 
 import org.bson.types.Binary;
 import org.springframework.data.annotation.Id;
@@ -27,6 +27,8 @@ public @Data class Image implements Serializable {
 	
 	private long rateCount;
 	
-	private List<String> coments;
+	private boolean isAvatar;
+	
+	private Date date;
 
 }

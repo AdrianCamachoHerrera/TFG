@@ -1,6 +1,7 @@
 package com.adrian.tfg.images.service;
 
 import java.io.IOException;
+import java.util.Date;
 
 import org.bson.BsonBinarySubType;
 import org.bson.types.Binary;
@@ -18,11 +19,13 @@ public class ImagesService {
 	@Autowired
 	private ImagesRepository imagesRepository;
 
-	public Image uploadImage(String author, String description, MultipartFile imageFile) throws IOException {
+	public Image uploadImage(String author, String description, boolean isAvatar, MultipartFile imageFile) throws IOException {
         Image image = new Image(); 
         
         image.setAuthor(author);
         image.setDescription(description);
+        image.setAvatar(isAvatar);
+        image.setDate(new Date());
         image.setImage(
           new Binary(BsonBinarySubType.BINARY, imageFile.getBytes())); 
         

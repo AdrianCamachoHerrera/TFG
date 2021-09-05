@@ -1,12 +1,10 @@
 package com.adrian.tfg.images.controller;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,8 +29,8 @@ public class ImagesController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
-	@PostMapping(name = "/upload")
-	public ResponseEntity<Image> postImage(@RequestParam String author, @RequestParam String description, @RequestBody MultipartFile image ){
+	@PostMapping("/upload")
+	public ResponseEntity<Image> postImage(@RequestParam String author, @RequestParam String description, @RequestParam boolean isAvatar, @RequestBody MultipartFile image ){
 		try {
 			if(author == null || description == null || image == null || image.isEmpty())
 				return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -41,11 +39,11 @@ public class ImagesController {
 				return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		
 		
-			return new ResponseEntity<>(imagesService.uploadImage(author, description, image), HttpStatus.OK);
+			return new ResponseEntity<>(imagesService.uploadImage(author, description, isAvatar, image), HttpStatus.OK);
 		}catch (Exception e) {
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
 	}
-
+	
 }
