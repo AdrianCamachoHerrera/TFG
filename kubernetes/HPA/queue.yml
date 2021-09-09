@@ -1,0 +1,33 @@
+apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: download-image
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: download-image
+  minReplicas: 1                                # Mínimo de réplicas
+  maxReplicas: 5                                # Máximo de réplica
+  metrics:
+  - type: Object
+    object:
+      metric:
+        name: rabbitmq_queue_messages_ready     # Nombre de la métrica
+      describedObject:
+        apiVersion: v1
+        kind: Service
+        name: rabbitmq-service                  # Servicio que expone la métrica
+      target:
+        type: Value
+        value: 5                                # Valor objetivo para la métrica
+  - type: External
+    external:
+      metric:
+        name: queue_messages_ready
+        selector:
+          matchLabels:
+            queue: "worker_tasks"
+      target:
+        type: AverageValue
+        averageValue: 10

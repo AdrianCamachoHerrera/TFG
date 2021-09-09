@@ -1,0 +1,16 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: https://openfaas.adriancamachofaas.ml
+functions:
+  get-friends:
+    lang: python3
+    handler: ./get-friends
+    image: hiimadry/get-friends:latest
+    environment:
+      mongo: mongo
+    labels:
+      com.openfaas.scale.min: 1         # mínimo de réplicas
+      com.openfaas.scale.max: 16        # máximo de réplicas
+      com.openfaas.scale.factor: 40     # factor de escalado (porcentaje)
+    

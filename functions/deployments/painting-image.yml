@@ -1,0 +1,10 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: https://openfaas.adriancamachofaas.ml
+functions:
+  painting-image:
+    lang: python3-flask-debian-im
+    handler: ./painting-image
+    image: hiimadry/painting-image:latest
+

@@ -1,0 +1,10 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: https://openfaas.adriancamachofaas.ml
+functions:
+  bw-image:
+    lang: python3-flask-debian-im-cv2
+    handler: ./bw-image
+    image: hiimadry/bw-image:latest
+
