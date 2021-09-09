@@ -6,6 +6,7 @@ import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,7 @@ import com.adrian.tfg.users.model.User;
 import com.adrian.tfg.users.service.UsersService;
 
 @RestController
+@CrossOrigin
 public class UsersController {
 	
 	@Autowired
@@ -34,8 +36,8 @@ public class UsersController {
 	}
 	
 	@PostMapping("/login")
-	public ResponseEntity<User> login(@RequestParam String username, @RequestParam String password) {
-		User loggedUser = usersService.login(username, password);
+	public ResponseEntity<User> login(@RequestBody User user) {
+		User loggedUser = usersService.login(user.getUsername(), user.getPassword());
 		if(Objects.nonNull(loggedUser)) {
 			loggedUser.setPassword(null);
 			return new ResponseEntity<>(loggedUser, HttpStatus.OK);

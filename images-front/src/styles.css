@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+.form-group, .form-row > .col, .form-row > [class*="col-"] {
+    padding-left:0; 
+    padding-right:0;
+    margin-bottom: 15px;
+}
+
+.form-row{
+    margin:0;
+}
+
+.ng-valid[required], .ng-valid.required{
+  border-left: 5px solid #42A948;
+}
+
+.ng-invalid:not(form) {
+  border-left: 5px solid #a94442; 
+}
