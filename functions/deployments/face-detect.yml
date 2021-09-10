@@ -1,0 +1,12 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: https://openfaas.adriancamachofaas.ml
+functions:
+  face-detect:
+    image: alexellis2/facedetect:0.1
+    skip_build: true
+    requests:
+      cpu: 200m
+    labels:
+      com.openfaas.scale.factor: 0

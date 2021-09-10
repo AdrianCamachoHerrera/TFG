@@ -14,5 +14,8 @@ def handle(req):
     
     retval, buffer = cv2.imencode('.jpg', invertedImage)
     response = make_response(buffer.tobytes())
+    response.headers.set('Content-Type', 'image/jpeg')
+    response.headers.set(
+        'Content-Disposition', 'attachment', filename='image.jpg')
     return response
     

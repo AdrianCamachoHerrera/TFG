@@ -7,7 +7,7 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: gs-image-test
+    name: gs-image
   minReplicas: 1                                # Mínimo de réplicas
   maxReplicas: 6                                # Máximo de réplicas
   metrics:

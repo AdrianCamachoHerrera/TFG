@@ -1,0 +1,12 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: face-detect
+spec:
+  maxReplicas: 8                   # Máximo de réplicas
+  minReplicas: 1                   # Mínimo de réplicas
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: face-detect
+  targetCPUUtilizationPercentage: 50 # Valor deseado en tanto por ciento de valor de solicitud de cpu

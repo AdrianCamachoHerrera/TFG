@@ -1,0 +1,21 @@
+apiVersion: autoscaling/v2beta2     # Versión de la API de autoscaling
+kind: HorizontalPodAutoscaler
+metadata:
+  name: face-blur
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1 
+    kind: Deployment 
+    name: face-blur 
+  minReplicas: 1                    # Mínimo de réplicas
+  maxReplicas: 20                   # Máximo de réplicas
+  metrics: 
+  - type: Resource
+    resource:
+      name: memory                  # Memoria
+      target:
+        type: Utilization          
+        averageValue: 25Mi         # Valor objetivo
+  behavior:
+    scaleDown:                                 # Comportamiento escalado hacia abajo
+      stabilizationWindowSeconds: 60

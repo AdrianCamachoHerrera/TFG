@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class UsersService {
 
-  readonly userURL: string = "http://localhost:8080/"
+  readonly userURL: string = "https://openfaas.adriancamachofaas.ml/function/users-ms/"
 
   readonly httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })

@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,6 +18,7 @@ import com.adrian.tfg.images.model.Image;
 import com.adrian.tfg.images.service.ImagesService;
 
 @RestController
+@CrossOrigin
 public class ImagesController {
 	
 	private static List<String> VALID_IMAGE_EXTENSIONS = Arrays.asList("image/jpg", "image/jpeg", "image/png");

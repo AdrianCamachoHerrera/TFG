@@ -4,8 +4,20 @@ provider:
   gateway: https://openfaas.adriancamachofaas.ml
 functions:
   download-image:
-    lang: python3-flask-debian
+    lang: python3-flask-debian-path
     handler: ./download-image
     image: hiimadry/download-image:latest
     environment:
       mongo: mongo
+    requests:                                               
+      cpu: 60m                                      # Solicitud de cpu
+      memory: 60Mi                                  # Solicitud de memoria
+    limits:
+     cpu: 500m
+     memory: 120Mi
+    labels:
+      com.openfaas.scale.factor: 0                  # Descativado escalado de OpenFaas
+    annotations:
+      prometheus.io.scrape: true 
+      prometheus.io.port: 8081          # Expone la métrica http_request_total del watchdog/of-watchdog
+

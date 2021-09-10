@@ -7,4 +7,9 @@ functions:
     lang: python3-flask-debian-im-cv2
     handler: ./gs-image
     image: hiimadry/gs-image:latest
+    labels:
+      com.openfaas.scale.factor: 0        # Descativado escalado de OpenFaas
+    annotations:
+      prometheus.io.scrape: true 
+      prometheus.io.port: 8081            # Expone la métrica http_request_total del watchdog/of-watchdog
 

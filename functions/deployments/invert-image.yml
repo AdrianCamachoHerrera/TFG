@@ -7,4 +7,12 @@ functions:
     lang: python3-flask-debian-im-cv2
     handler: ./invert-image
     image: hiimadry/invert-image:latest
+    requests:
+      cpu: 35m                                      # Solicitud de CPU
+    labels:
+      com.openfaas.scale.factor: 0                  # Descativado escalado de OpenFaas
+    annotations:
+      prometheus.io.scrape: true 
+      prometheus.io.port: 8081            # Expone la métrica http_request_total del watchdog/of-watchdog
+
 
