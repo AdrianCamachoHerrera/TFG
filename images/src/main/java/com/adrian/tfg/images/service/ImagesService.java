@@ -2,6 +2,8 @@ package com.adrian.tfg.images.service;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.bson.BsonBinarySubType;
 import org.bson.types.Binary;
@@ -30,6 +32,11 @@ public class ImagesService {
           new Binary(BsonBinarySubType.BINARY, imageFile.getBytes())); 
         
         return imagesRepository.insert(image);
+	}
+
+	public List<String> findImagesList(String author) {
+		
+		return imagesRepository.findByAuthorAndIsAvatarOrderByDateDesc(author, false).stream().map(Image::getId).collect(Collectors.toList());
 	}
 
 }
