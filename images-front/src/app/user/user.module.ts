@@ -6,13 +6,15 @@ import { DetailComponent } from './components/detail/detail.component';
 import { EditComponent } from './components/edit/edit.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ChangueAvatarComponent } from './components/changue-avatar/changue-avatar.component';
 
 
 @NgModule({
   declarations: [
     DetailComponent,
     EditComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    ChangueAvatarComponent
   ],
   imports: [
     CommonModule,

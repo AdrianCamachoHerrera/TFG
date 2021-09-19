@@ -7,6 +7,7 @@ import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
 import { HttpClientModule } from '@angular/common/http';
 import { UserModule } from './user/user.module';
+import { OverlayModule } from "@angular/cdk/overlay";
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { UserModule } from './user/user.module';
     SharedModule,
     AuthModule,
     UserModule, 
-    HttpClientModule
+    HttpClientModule,
+    OverlayModule
   ],
   providers: [],
   bootstrap: [AppComponent]

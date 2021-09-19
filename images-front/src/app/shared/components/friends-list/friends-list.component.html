@@ -1,0 +1,8 @@
+<div class="container">
+    <h2>My Friends</h2>
+    <ul class="list-group list-group-flush">
+    <li list-group-item *ngFor="let friend of friends">
+        <span class="badge">{{ friend.username }}</span> {{ friend.name }}
+    </li>
+    </ul>
+</div>
