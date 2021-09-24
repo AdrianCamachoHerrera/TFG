@@ -1,1 +1,33 @@
-<p>home works!</p>
+<div class="container-fluid">
+  <div class="row justify-content-center min-vh-100">
+    <div class="col-2 left">
+      <div class="position-fixed">
+        <app-detail></app-detail>
+      </div>
+    </div>
+
+    <div class="col-8">
+      <div class="container-fluid">
+        <div class="row">
+          <div *ngFor="let image of imageidList" class="col-md-3 img-container">
+            <img
+              src="https://openfaas.adriancamachofaas.ml/function/download-image/{{
+                image
+              }}"
+              class="photo"
+              alt="image"
+            />
+          </div>
+        </div>
+      </div>
+
+      <button class="btn btn-secondary" (click)="publicImage()">
+        <i class="fas fa-plus-circle"></i> New Publication
+      </button>
+    </div>
+
+    <div class="col-2 right ">
+      <app-friends-list></app-friends-list>
+    </div>
+  </div>
+</div>

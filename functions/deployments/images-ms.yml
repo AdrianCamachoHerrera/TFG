@@ -7,9 +7,6 @@ functions:
     lang: dockerfile
     handler: ./images
     image: hiimadry/images-ms:latest 
-#    requests:
-#      cpu: 25m
-#      memory: 298M
     annotations:
       com.openfaas.health.http.path: "/health"
       com.openfaas.health.http.initialDelay: "30s"

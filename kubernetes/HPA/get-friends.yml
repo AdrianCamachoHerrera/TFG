@@ -1,0 +1,17 @@
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: get-friends
+  namespace: openfaas-fn
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: get-friends
+  minReplicas: 1                                # Mínimo de réplicas
+  maxReplicas: 10                               # Máximo de réplicas
+  metrics:
+    - type: Pods                                # Métrica de tipo pod
+      pods:
+        metricName: http_requests_per_second    # Metrica personalizada accesible desde la custom metrics API
+        targetAverageValue: 3                   # Valor objetivo (como média de la métrica entre todos los pods)

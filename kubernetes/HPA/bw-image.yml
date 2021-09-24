@@ -8,7 +8,7 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: bw-image-test
+    name: bw-image
   targetCPUUtilizationPercentage: 50 # Valor deseado en tanto por ciento de valor de solicitud de cpu
 
 

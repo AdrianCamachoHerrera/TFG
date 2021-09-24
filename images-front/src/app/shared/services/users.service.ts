@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs';
+import { User } from '../model/User';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
 
-  readonly userURL: string = "http://localhost:8080/"
+  readonly userURL: string = "https://openfaas.adriancamachofaas.ml/function/users-ms/"
 
   readonly httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -28,6 +29,18 @@ export class UsersService {
       name,
       password
     }, this.httpOptions);
+  }
+
+  changuePassword(body:any): Observable<any>{
+    return this.http.post(this.userURL + 'change-password', body, this.httpOptions);
+  }
+
+  find(userid: string): Observable<User>{
+    return this.http.get<User>(this.userURL + 'user/' + userid, this.httpOptions);
+  }
+
+  patch(userid: string, body: any): Observable<User>{
+    return this.http.patch<User>(this.userURL + 'user/' + userid, body, this.httpOptions);
   }
 
 }

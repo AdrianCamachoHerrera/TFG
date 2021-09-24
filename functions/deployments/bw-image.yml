@@ -7,4 +7,8 @@ functions:
     lang: python3-flask-debian-im-cv2
     handler: ./bw-image
     image: hiimadry/bw-image:latest
+    requests:
+      cpu: 35m                                      # Solicitud de CPU
+    labels:
+      com.openfaas.scale.factor: 0                  # Descativado escalado de OpenFaas
 

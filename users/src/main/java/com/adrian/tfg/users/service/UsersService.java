@@ -67,4 +67,16 @@ public class UsersService {
 		
 	}
 
+	public void changePassword(String id, String oldpassword, String password) {
+		Optional<User> userOpt = usersRepository.findById(id);
+		if(userOpt.isPresent() && passwordEncoder.matches(oldpassword, userOpt.get().getPassword())) {
+			User user = userOpt.get();
+			user.setPassword(passwordEncoder.encode(password));
+			usersRepository.save(user);
+		}else {
+			throw new RuntimeException("unauthorized");
+		}
+		
+	}
+
 }

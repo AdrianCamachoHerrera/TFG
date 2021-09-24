@@ -27,4 +27,8 @@ def handle(req):
     img_byte_arr = io.BytesIO()
     im = im.convert('RGB')
     im.save(img_byte_arr, format='JPEG', optimize=True, quality=95)
-    return make_response(img_byte_arr.getvalue())
+    response = make_response(img_byte_arr.getvalue())
+    response.headers.set('Content-Type', 'image/jpeg')
+    response.headers.set(
+    'Content-Disposition', 'attachment', filename='image.jpg')
+    return response

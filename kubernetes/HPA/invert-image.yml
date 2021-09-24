@@ -7,7 +7,7 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: invert-image-test
+    name: invert-image
   minReplicas: 1                                # Mínimo de réplicas
   maxReplicas: 8                                # Máximo de réplicas
   metrics:

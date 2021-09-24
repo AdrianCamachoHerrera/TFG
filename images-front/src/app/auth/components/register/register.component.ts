@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsersService } from 'src/app/shared/services/users.service';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -60,6 +59,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(){
+    this.submitted = true;
     const { username, name, password, confirmPassword } = this.form.value;
 
     this.usersService.register(username, name, password).subscribe(

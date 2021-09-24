@@ -1,0 +1,20 @@
+<div class="container-fluid">
+  <h2>Friends</h2>
+
+  <div class="card" *ngFor="let friend of friends">
+    <div class="flex-container">
+      <img src="https://openfaas.adriancamachofaas.ml/function/download-image/{{
+        friend.avatar
+      }}"
+      alt='' width="50" height="50" class="litte-avatar">
+
+      <a class="nav-link" [routerLink]="['/user-edit']" roterLinkActive="active"
+        ><h4>{{ friend.username }}</h4></a
+      >
+    </div>
+  </div>
+
+  <button class="align-self-end btn btn-primary btn-lg">
+    <i class="fas fa-plus-circle"></i> Add friend
+  </button>
+</div>

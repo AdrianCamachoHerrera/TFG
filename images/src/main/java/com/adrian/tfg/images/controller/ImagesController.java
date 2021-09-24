@@ -6,7 +6,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,6 +19,7 @@ import com.adrian.tfg.images.model.Image;
 import com.adrian.tfg.images.service.ImagesService;
 
 @RestController
+@CrossOrigin
 public class ImagesController {
 	
 	private static List<String> VALID_IMAGE_EXTENSIONS = Arrays.asList("image/jpg", "image/jpeg", "image/png");
@@ -44,6 +47,11 @@ public class ImagesController {
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
+	}
+	
+	@GetMapping("/images/{author}")
+	public ResponseEntity<List<String>> getImagesList(@PathVariable  String author){
+		return new ResponseEntity<>(imagesService.findImagesList(author), HttpStatus.OK);
 	}
 	
 }

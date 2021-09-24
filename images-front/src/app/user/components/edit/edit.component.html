@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row">
+      <div class="col-md-6 offset-md-3 mt-4">
+
+        <img src={{img}} alt='image' width="200" height="200" (click)="editImage()" >
+        <br/>
+
+          <h3>User Information</h3>
+
+          <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+              <div class="form-group">
+                <label for="loginUsername">Username:</label>
+                <input type="text" name="username" [(ngModel)]="user.username" required minlength="3" maxlength="20" #username="ngModel"  class="form-control" id="username">
+                </div>
+
+                <div *ngIf="username.invalid"
+                class="alert">
+      
+                  <div *ngIf="username.errors?.required" style="color: red;">
+                    <i class="fas fa-exclamation-circle"></i> Username is required.
+                  </div>
+
+                  <div *ngIf="username.errors?.minlength" style="color: red;">
+                    <i class="fas fa-exclamation-circle"></i> Username must be at least 3 characters long.
+                  </div>
+
+                  <div *ngIf="username.errors?.maxlength" style="color: red;">
+                    <i class="fas fa-exclamation-circle"></i> username is too long.
+                  </div>
+      
+                </div>
+
+              <div class="form-group">
+                <label for="loginPassword">Name:</label>
+                <input type="text" name="name" [(ngModel)]="user.name"  required minlength="3" maxlength="20" #name="ngModel" class="form-control" id="name" >
+              </div>
+              
+              <div *ngIf="name.invalid"
+              class="alert">
+    
+                <div *ngIf="name.errors?.required" style="color: red;" >
+                  <i class="fas fa-exclamation-circle"></i> Name is required.
+                </div>
+
+                <div *ngIf="name.errors?.minlength" style="color: red;">
+                  <i class="fas fa-exclamation-circle"></i> name must be at least 3 characters long.
+                </div>
+
+                
+                <div *ngIf="name.errors?.maxlength" style="color: red;">
+                  <i class="fas fa-exclamation-circle"></i> name is too long.
+                </div>
+                
+              </div>
+
+              <button type="submit" [disabled]="(f.invalid || f.pristine)" class="btn btn-primary">Edit <i class="fas fa-edit"></i></button>
+
+        </form>
+
+      </div>
+  </div>
+</div>
+
