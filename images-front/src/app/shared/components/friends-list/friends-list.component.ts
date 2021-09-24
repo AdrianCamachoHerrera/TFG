@@ -10,20 +10,19 @@ import { FunctionsService } from '../../services/functions.service';
 export class FriendsListComponent implements OnInit {
   friends: Friend[];
   userid: string;
+  img: string;
 
-  constructor(private functionsService: FunctionsService) {
-    
-  }
+  constructor(private functionsService: FunctionsService) {}
 
   ngOnInit(): void {
+
+    this.img = 'https://openfaas.adriancamachofaas.ml/function/download-image/';
+
     this.userid = localStorage.getItem('userid');
     const user = this.userid;
-    this.functionsService.getFriends({user}).subscribe(
-      data => {
-        this.friends = data;
-        console.log(data);
-       }
-    );
-
+    this.functionsService.getFriends({ user }).subscribe((data) => {
+      this.friends = data;
+      console.log(data);
+    });
   }
 }

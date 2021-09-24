@@ -87,3 +87,12 @@
   margin-left: 75px;
   margin-top: 50px;
 }
+
+.litte-avatar {
+  display: block;
+  margin-top: 3px;
+  margin-left: 6px;
+  margin-bottom:3px;
+  border-radius: 50%;
+  border: 1px solid rgb(43, 43, 43);
+}

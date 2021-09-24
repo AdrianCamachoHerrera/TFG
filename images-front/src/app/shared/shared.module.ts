@@ -9,24 +9,15 @@ import { NewImageComponent } from './components/new-image/new-image.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FriendsListComponent } from './components/friends-list/friends-list.component';
 
-
-
 @NgModule({
   declarations: [
     ColumnOneComponent,
     HeaderComponent,
     HomeComponent,
     NewImageComponent,
-    FriendsListComponent
+    FriendsListComponent,
   ],
-  imports: [
-    CommonModule,
-    SharedRoutingModule,
-    UserModule,
-    ReactiveFormsModule
-  ],
-  exports:[
-    ColumnOneComponent
-  ]
+  imports: [CommonModule, SharedRoutingModule, UserModule, ReactiveFormsModule],
+  exports: [ColumnOneComponent],
 })
-export class SharedModule { }
+export class SharedModule {}
