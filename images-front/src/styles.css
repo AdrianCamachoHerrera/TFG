@@ -48,6 +48,7 @@
   margin-bottom: 20px;
   margin-top: 30px;
   border: 5px solid rgb(43, 43, 43);
+  background-color: white;
 }
 
 .center-text {
@@ -79,6 +80,14 @@
   border: 5px solid rgb(43, 43, 43);
 }
 
+.photo-detail {
+  display: block;
+  width: 540px;
+  height: 540px;
+  border: 5px solid rgb(43, 43, 43);
+  margin: 40px;
+}
+
 .img-container {
   display: flex;
   flex-wrap: wrap;
@@ -95,4 +104,19 @@
   margin-bottom:3px;
   border-radius: 50%;
   border: 1px solid rgb(43, 43, 43);
+  background-color: white;
+}
+
+.btn-left{
+  text-align: left;
+  margin-bottom: 5px;
+}
+
+.btn-right{
+  text-align: right;
+}
+
+.close-top-left{
+  text-align: top;
+  text-align: left;
 }

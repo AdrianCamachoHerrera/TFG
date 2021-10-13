@@ -2,6 +2,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Friend } from '../model/Friend';
+import {Comment} from '../model/Comment'
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +34,14 @@ export class FunctionsService {
 
   getFriends(body:any): Observable<Friend[]>{
     return this.http.post<Friend[]>(this.functionURL + 'get-friends/', body, this.httpOptions);
+  }
+
+  getComments(body: any): Observable<Comment[]>{
+    return this.http.post<Comment[]>(this.functionURL + 'get-comments/', body, this.httpOptions);
+  }
+
+  postComment(body: any): Observable<Comment>{
+    return this.http.post<Comment>(this.functionURL + 'post-comment/', body);
   }
 
 }

@@ -27,7 +27,7 @@ public class UsersService {
 		}
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		user.setId(null);
-		user.setAvatar(null);
+		user.setAvatar("61462783822e5937cf960bc8");
 		user.setFriends(new ArrayList<String>());
 		return usersRepository.save(user);
 	}
@@ -77,6 +77,10 @@ public class UsersService {
 			throw new RuntimeException("unauthorized");
 		}
 		
+	}
+
+	public List<User> findByUsername(String text) {
+		return usersRepository.findByUsernameLike(text);
 	}
 
 }

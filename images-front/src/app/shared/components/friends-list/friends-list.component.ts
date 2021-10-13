@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Friend } from '../../model/Friend';
 import { FunctionsService } from '../../services/functions.service';
 
@@ -7,14 +8,20 @@ import { FunctionsService } from '../../services/functions.service';
   templateUrl: './friends-list.component.html',
   styleUrls: ['./friends-list.component.css'],
 })
-export class FriendsListComponent implements OnInit {
+export class FriendsListComponent implements OnInit, OnDestroy{
   friends: Friend[];
   userid: string;
+  selectedFriend: string;
+  private sub: any;
   img: string;
 
-  constructor(private functionsService: FunctionsService) {}
+  constructor(private functionsService: FunctionsService,  private activeroute: ActivatedRoute, private route: Router) {}
 
   ngOnInit(): void {
+
+    this.sub = this.activeroute.params.subscribe((params) => {
+      this.selectedFriend = params['id'];
+    });
 
     this.img = 'https://openfaas.adriancamachofaas.ml/function/download-image/';
 
@@ -22,7 +29,19 @@ export class FriendsListComponent implements OnInit {
     const user = this.userid;
     this.functionsService.getFriends({ user }).subscribe((data) => {
       this.friends = data;
-      console.log(data);
     });
+  }
+
+  addFriends(): void {
+    console.log("hey")
+    this.route.navigate(['/users-search']);
+  }
+
+  unfollowFriend(): void{
+    
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 }
