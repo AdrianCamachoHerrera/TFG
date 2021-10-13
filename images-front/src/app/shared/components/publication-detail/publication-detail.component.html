@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="close-top-left">
+    <i class="fas fa-lg fa-arrow-left" (click)="back()"></i>
+  </div>
+  <div class="row justify-content-around">
+    <div class="col-7">
+      <img
+        src="https://openfaas.adriancamachofaas.ml/function/download-image/{{
+          image
+        }}"
+        class="photo-detail"
+        alt=""
+      />
+      <h3>{{ title }}</h3>
+    </div>
+    <div class="col-5 margin-top">
+      <h4>Make a comment</h4>
+      <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <textarea
+          class="form-control"
+          ngModel
+          required
+          maxlength="150"
+          id="text"
+          name="text"
+          rows="3"
+        ></textarea>
+
+        <div class="btn-left">
+          <button
+            class="btn btn-primary text-left"
+            [disabled]="f.invalid"
+            type="submit"
+          >
+            Comment
+          </button>
+        </div>
+      </form>
+      <div class="overflow-auto">
+        <div *ngFor="let comment of comments">
+          <div class="card mb-3" style="max-width: 400px; max-height: 100px">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img
+                  src="https://openfaas.adriancamachofaas.ml/function/download-image/{{
+                    comment.avatar
+                  }}"
+                  alt=""
+                  width="70"
+                  height="70"
+                  class="avatar"
+                />
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">{{ comment.username }}</h5>
+                  <p class="card-text">{{ comment.text }}</p>
+                  <p class="card-text">
+                    <small class="text-muted">{{ comment.date }}</small>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

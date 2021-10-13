@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { User } from '../model/User';
+import { UserSearch } from '../model/UserSearch';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +43,12 @@ export class UsersService {
 
   patch(userid: string, body: any): Observable<User>{
     return this.http.patch<User>(this.userURL + 'user/' + userid, body, this.httpOptions);
+  }
+
+  search(text: string): Observable<UserSearch[]>{
+    let params = new HttpParams();
+    params = params.append('text', text);
+    return this.http.get<UserSearch[]>(this.userURL + 'findByUsername', {params : params}).pipe(tap(results => console.log("API was called!", results)));
   }
 
 }

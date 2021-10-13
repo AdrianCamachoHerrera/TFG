@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FunctionsService } from '../../services/functions.service';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -11,6 +11,8 @@ import { UsersService } from '../../services/users.service';
   styleUrls: ['./new-image.component.css'],
 })
 export class NewImageComponent implements OnInit {
+  @Output() closePanel = new EventEmitter<void>();
+
   imageToShow: any;
   uploadForm: FormGroup;
   filterImage: File;
@@ -122,9 +124,9 @@ export class NewImageComponent implements OnInit {
   // Submit Form
   submit() {
     let image: File = this.filterImage;
-    let title: string = this.uploadForm.value.title;
+    let title: string = "OpenFaaS painting";
     this.imageService.uploadImage(image, this.userid, false, title).subscribe(
-      (res) => {},
+      (res) => {this.closePanel.emit();},
       (err) => {}
     );
   }

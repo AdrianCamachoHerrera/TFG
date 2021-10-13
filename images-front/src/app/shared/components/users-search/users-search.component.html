@@ -1,0 +1,75 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3 mt-4">
+      <h3>Find new Friends</h3>
+      <br />
+
+      <div class="form-group">
+        <input
+          type="text"
+          required
+          minlength="3"
+          class="form-control"
+          [formControl]="searchControl"
+          placeholder="Search by username"
+        />
+
+        <div>
+          <ng-container
+            *ngIf="
+              areMinimumCharactersTyped$ | async;
+              else lessThanMinimumCharactersTyped
+            "
+          >
+            <ng-container *ngIf="areNoResultsFound$ | async; else results">
+              No Results found.
+            </ng-container>
+            <ng-template #results>
+              <div *ngFor="let result of searchResults$ | async">
+                <div *ngIf="notFriends(result.id)">
+                  <div class="card mb-3">  
+                    <div class="row no-gutters">
+                      <div class="col-md-4">
+                        <img
+                          src="https://openfaas.adriancamachofaas.ml/function/download-image/{{
+                            result.avatar
+                          }}"
+                          alt=""
+                          width="100"
+                          height="100"
+                          class="avatar"
+                        />
+                      </div>
+                      <div class="col-md-4">
+                        <div class="card-body">
+                          <h5 class="card-title">{{ result.username }}</h5>
+                          <p class="card-text">{{ result.name }}</p>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="card-body">
+                          <button
+                            class="btn btn-primary"
+                            (click)="addFriend(result.id)"
+                          >
+                            <i class="fas fa-plus-circle"></i> Add friend
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </ng-container>
+          <ng-template #lessThanMinimumCharactersTyped>
+            <div style="color: red">
+              <i class="fas fa-exclamation-circle"></i> Enter minimum 3
+              characters to start searching.
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,19 +1,37 @@
-<div class="container-fluid">
-  <form [formGroup]="uploadForm" (ngSubmit)="submit()">
-    <!-- Select File -->
-    <input
-      type="file"
-      accept="image/*"
-      (change)="showPreview($event)"
-      class="custom-file-upload"
-    />
+<div class="container">
+  <div class="row justify-content-around">
+    <div class="col-5">
+      <form [formGroup]="uploadForm">
+        <!-- Select File -->
+        <div>
+          <h4>New Publication</h4>
+          <input
+            class="form-control form-control-lg border1"
+            type="file"
+            accept="image/*"
+            (change)="showPreview($event)"
+          />
+        </div>
 
-    <!-- Image Preview -->
-    <div class="imagePreview" *ngIf="imageToShow && imageToShow !== ''">
-      <div class="container img-radio">
-        <img [src]="imageToShow" [alt]="uploadForm.value.name" class="photo" />
-        <!-- Assign Image Alt -->
-        <form [formGroup]="form" (change)="handleChange()">
+        <!-- Image Preview -->
+        <div class="imagePreview" *ngIf="imageToShow && imageToShow !== ''">
+          <img
+            [src]="imageToShow"
+            [alt]="uploadForm.value.name"
+            class="photo"
+          />
+        </div>
+      </form>
+    </div>
+
+    <div class="col-5 text-left">
+      <div class="margin-top">
+        <form
+          [formGroup]="form"
+          (change)="handleChange()"
+          *ngIf="imageToShow && imageToShow !== ''"
+          (ngSubmit)="submit()"
+        >
           <div class="form-check">
             <input
               class="form-check-input"
@@ -23,7 +41,7 @@
               checked
             />
             <label class="form-check-label" for="flexRadioDefault2">
-              No Filters
+              <b>No Filters</b>
             </label>
           </div>
           <div class="form-check">
@@ -34,7 +52,7 @@
               formControlName="filter"
             />
             <label class="form-check-label" for="flexRadioDefault1">
-              Black & White <br />
+              <b> Black & White </b>
             </label>
           </div>
           <div class="form-check">
@@ -45,7 +63,7 @@
               formControlName="filter"
             />
             <label class="form-check-label" for="flexRadioDefault1">
-              Gray Scale <br />
+              <b> Gray Scale </b>
             </label>
           </div>
           <div class="form-check">
@@ -56,7 +74,7 @@
               formControlName="filter"
             />
             <label class="form-check-label" for="flexRadioDefault1">
-              Invert <br />
+              <b> Invert </b>
             </label>
           </div>
           <div class="form-check">
@@ -67,13 +85,23 @@
               formControlName="filter"
             />
             <label class="form-check-label" for="flexRadioDefault1">
-              Painting Effect <br />
+              <b> Painting Effect </b>
             </label>
+          </div>
+          <input
+            class="form-control"
+            formControlName="title"
+            placeholder="Enter Image Title"
+          />
+          <div class="text-left">
+            <div class="btn-left">
+              <button class="btn btn-primary" type="submit()">
+                Public Image
+              </button>
+            </div>
           </div>
         </form>
       </div>
-      <input formControlName="title" placeholder="Enter Image Title" />
-      <button class="btn btn-primary" type="submit()">Public Image</button>
     </div>
-  </form>
+  </div>
 </div>

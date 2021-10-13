@@ -1,0 +1,17 @@
+.avatar {
+    width: 250px;
+    height: 250px;
+    
+}
+
+.border1 {
+    border: 3px solid #0d6efd
+}
+
+.container{
+    width: 768px;
+}
+
+.right-btn{
+    margin-left: 500px;
+}

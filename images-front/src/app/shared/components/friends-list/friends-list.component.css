@@ -22,3 +22,24 @@
     margin-top: 20px;
     align-self: auto;
 }
+
+.red {
+    background-color: rgb(255, 81, 81);
+}
+
+.btn-danger {
+    background-color: rgb(255, 81, 81);
+    border-color: rgb(255, 81, 81);
+}
+
+.btn-lg1 {
+    padding: .5rem 4.32rem;
+}
+
+.btn-lg2 {
+    padding: .5rem 3.6rem;
+}
+
+.fa-plus-circle{
+    margin-left: 10px;
+}

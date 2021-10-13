@@ -71,6 +71,11 @@ public class UsersController {
 		}
 	}
 	
+	@GetMapping("/findByUsername")
+	public ResponseEntity<List<User>> findByUsername(@RequestParam String text) {
+		return new ResponseEntity<>(usersService.findByUsername(text), HttpStatus.OK);
+	}
+	
 	@PatchMapping("/friends")
 	public ResponseEntity<User> patchFriends(@RequestParam String userid, @RequestBody List<String> friends) {
 		try {

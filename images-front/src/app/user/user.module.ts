@@ -7,6 +7,7 @@ import { EditComponent } from './components/edit/edit.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChangueAvatarComponent } from './components/changue-avatar/changue-avatar.component';
+import { FriendDetailComponent } from './components/friend-detail/friend-detail.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { ChangueAvatarComponent } from './components/changue-avatar/changue-avat
     DetailComponent,
     EditComponent,
     ChangePasswordComponent,
-    ChangueAvatarComponent
+    ChangueAvatarComponent,
+    FriendDetailComponent
   ],
   imports: [
     CommonModule,
@@ -25,6 +27,7 @@ import { ChangueAvatarComponent } from './components/changue-avatar/changue-avat
   exports: [
     ChangePasswordComponent,
     DetailComponent,
+    FriendDetailComponent,
     EditComponent
   ]
 })

@@ -42,3 +42,4 @@ images/mvnw.cmd
 images/.mvn/wrapper/maven-wrapper.jar
 images/.mvn/wrapper/maven-wrapper.properties
 images/.mvn/wrapper/MavenWrapperDownloader.java
+/.metadata/

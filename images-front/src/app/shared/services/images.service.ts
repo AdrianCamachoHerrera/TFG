@@ -31,4 +31,8 @@ export class ImagesService {
     return this.http.get<string[]>(this.imageURL + 'images/' + userid, this.httpOptions);
   }
 
+  getImage(id: string): Observable<Image>{
+    return this.http.get<Image>(this.imageURL + 'image/' + id, this.httpOptions);
+  }
+
 }

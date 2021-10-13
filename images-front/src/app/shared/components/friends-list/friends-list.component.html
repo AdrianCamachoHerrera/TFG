@@ -1,20 +1,39 @@
 <div class="container-fluid">
   <h2>Friends</h2>
 
-  <div class="card" *ngFor="let friend of friends">
-    <div class="flex-container">
-      <img src="https://openfaas.adriancamachofaas.ml/function/download-image/{{
-        friend.avatar
-      }}"
-      alt='' width="50" height="50" class="litte-avatar">
+  <div *ngFor="let friend of friends">
 
-      <a class="nav-link" [routerLink]="['/user-edit']" roterLinkActive="active"
-        ><h4>{{ friend.username }}</h4></a
-      >
+    <div [ngClass]="friend.userid == selectedFriend ? 'card red': 'card'" >
+
+      <div class="flex-container">
+        <img
+          src="https://openfaas.adriancamachofaas.ml/function/download-image/{{
+            friend.avatar
+          }}"
+          alt=""
+          width="50"
+          height="50"
+          class="litte-avatar"
+        />
+
+        <a
+          class="nav-link"
+          [routerLink]="['/profile', friend.userid]"
+          routerLinkActive="active-link"
+          ><h4>{{ friend.username }}</h4></a
+        >
+      </div>
+
     </div>
   </div>
 
-  <button class="align-self-end btn btn-primary btn-lg">
+  <div *ngIf="selectedFriend">
+  <button class="btn btn-danger btn-lg btn-lg1" (click)="unfollowFriend()">
+    <i class="fas fa-minus-circle"></i> Unfollow 
+  </button>
+  </div>
+
+  <button class="align-self-end btn btn-primary btn-lg btn-lg2" (click)="addFriends()">
     <i class="fas fa-plus-circle"></i> Add friend
   </button>
 </div>
